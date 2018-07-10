@@ -1,8 +1,7 @@
 {
   "username"     : "",
-  "password"     : "",
+  "key-file"     : "",
   "hostname"     : "",
-  "plantcv-path" : "",
   "git-path"     : "",
   "www-path"     : ""
 }
