@@ -1,7 +1,0 @@
-{
-  "username"     : "ec2-user",
-  "key-file"     : "/user/pi/Documents/aspb/pb2018.pem",
-  "hostname"     : "ec2-13-59-42-26.us-east-2.compute.amazonaws.com",
-  "git-path"     : "/home/ec2-user/aspb-outreach-2018",
-  "www-path"     : ""
-}
