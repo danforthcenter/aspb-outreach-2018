@@ -51,9 +51,10 @@ def main():
     conf = json.load(config)
 
     # SSH connection
+    key = paramiko.RSAKey.from_private_key_file(conf['key-file'])
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    ssh.connect(conf['hostname'], username=conf['username'], password=conf['password'])
+    ssh.connect(conf['hostname'], username=conf['username'], pkey=key)
     sftp = ssh.open_sftp()
 
     filename = args.exp + ".jpg"
@@ -79,7 +80,7 @@ def main():
         print("I/O error({0}): {1}. Offending file: {2}".format(e.errno, e.strerror, filename))
 
     print("Analyzing image")
-    cmds = ["export PYTHONPATH=" + conf['plantcv-path']]
+    cmds = ["source activate plantcv"]
 
     if args.exp == 'indigo':
         opts = ["--image", os.path.join(conf['www-path'], filename), "--outdir", conf["www-path"]]
