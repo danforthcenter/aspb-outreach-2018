@@ -4,7 +4,7 @@ import cv2
 import os
 import numpy as np
 import argparse
-import plantcv as pcv
+from plantcv import plantcv as pcv
 
 
 def options():
