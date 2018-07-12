@@ -80,23 +80,23 @@ def main():
         print("I/O error({0}): {1}. Offending file: {2}".format(e.errno, e.strerror, filename))
 
     print("Analyzing image")
-    cmds = ["source activate plantcv"]
+    cmd = "bash -l -c 'source activate plantcv;"
 
     if args.exp == 'indigo':
         opts = ["--image", os.path.join(conf['www-path'], filename), "--outdir", conf["www-path"]]
-        cmds.append(os.path.join(conf['git-path'], "indigo-phenotyping.py " + " ".join(map(str, opts))))
+        cmd = cmd + os.path.join(conf['git-path'], "indigo-phenotyping.py " + " ".join(map(str, opts))) + "'"
     elif args.exp == 'arabidopsis':
         opts = ["--image", os.path.join(conf['www-path'], filename), "--outdir", conf["www-path"]]
-        cmds.append(os.path.join(conf['git-path'], "arabidopsis-phenotyping.py " + " ".join(map(str, opts))))
+        cmd = cmd + os.path.join(conf['git-path'], "arabidopsis-phenotyping.py " + " ".join(map(str, opts))) + "'"
     elif args.exp == 'cassava':
         opts = ["--image", os.path.join(conf['www-path'], filename), "--outdir", conf["www-path"]]
-        cmds.append(os.path.join(conf['git-path'], "cassava-phenotyping.py " + " ".join(map(str, opts))))
+        cmd = cmd + os.path.join(conf['git-path'], "cassava-phenotyping.py " + " ".join(map(str, opts))) + "'"
     elif args.exp == 'sorghum-seed':
         opts = ["--image", os.path.join(conf['www-path'], filename), "--outdir", conf["www-path"],
                 "--mask", os.path.join(conf["git-path"], "sample-data/seed-mask.jpg")]
-        cmds.append(os.path.join(conf['git-path'], "sorghum-seed-phenotyping.py " + " ".join(map(str, opts))))
+        cmd = cmd + os.path.join(conf['git-path'], "sorghum-seed-phenotyping.py " + " ".join(map(str, opts))) + "'"
 
-    stdin_, stdout_, stderr_ = ssh.exec_command(';'.join(map(str, cmds)))
+    stdin_, stdout_, stderr_ = ssh.exec_command(cmd)
     stderr_.channel.recv_exit_status()
     lines = stderr_.readlines()
     for line in lines:
