@@ -28,7 +28,7 @@ def options():
                         help="Experiment. Options = arabidopsis, indigo, cassava, sorghum-seed", default="sorghum-seed")
     args = parser.parse_args()
 
-    if args.exp not in ['arabidopsis', 'indigo', 'cassava', 'sorghum-seed']:
+    if args.exp not in ['arabidopsis', 'indigo', 'cassava', 'sorghum-seed','maize','quinoa']:
         print("{0} is not a valid experiment\n".format(args.exp))
         sys.exit(1)
 
@@ -85,6 +85,12 @@ def main():
     if args.exp == 'indigo':
         opts = ["--image", os.path.join(conf['www-path'], filename), "--outdir", conf["www-path"]]
         cmd = cmd + os.path.join(conf['git-path'], "indigo-phenotyping.py " + " ".join(map(str, opts))) + "'"
+    elif args.exp == 'maize':
+        opts = ["--image", os.path.join(conf['www-path'], filename), "--outdir", conf["www-path"]]
+        cmd = cmd + os.path.join(conf['git-path'], "maize-seed-phenotyping.py " + " ".join(map(str, opts))) + "'"
+    elif args.exp == 'quinoa':
+        opts = ["--image", os.path.join(conf['www-path'], filename), "--outdir", conf["www-path"]]
+        cmd = cmd + os.path.join(conf['git-path'], "quinoa-seed-phenotyping.py " + " ".join(map(str, opts))) + "'"
     elif args.exp == 'arabidopsis':
         opts = ["--image", os.path.join(conf['www-path'], filename), "--outdir", conf["www-path"]]
         cmd = cmd + os.path.join(conf['git-path'], "arabidopsis-phenotyping.py " + " ".join(map(str, opts))) + "'"

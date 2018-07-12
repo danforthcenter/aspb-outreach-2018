@@ -6,9 +6,12 @@
     <script type="text/javascript">
         function relaod_imgs(source) {
             rnum = Math.floor((Math.random() * 1000) + 1);
-            if (source === "indigo") {
-                document.getElementById("left-img").src = "indigo-out_shapes.jpg?dummy=" + rnum;
-                document.getElementById("right-img").src = "indigo_v_pseudo_on_img.jpg?dummy=" + rnum;
+            if (source === "maize") {
+                document.getElementById("left-img").src = "maize-seed-maxseed.jpg?dummy" + rnum;
+                document.getElementById("right-img").src = "maize-seed-seed-confetti.jpg?dummy=" + rnum;
+            } else if (source === "sorghum") {
+                document.getElementById("left-img").src = "quinoa-seed-maxseed.jpg?dummy=" + rnum;
+                document.getElementById("right-img").src = "quinoa-seed-seed-confetti.jpg?dummy=" + rnum;
             } else if (source === "arabidopsis") {
                 document.getElementById("left-img").src = "arabidopsis-out_shapes.jpg?dummy=" + rnum;
                 document.getElementById("right-img").src = "arabidopsis_v_pseudo_on_img.jpg?dummy=" + rnum;
@@ -18,22 +21,29 @@
             } else if (source === "sorghum") {
                 document.getElementById("left-img").src = "sorghum-seed-maxseed.jpg?dummy=" + rnum;
                 document.getElementById("right-img").src = "sorghum-seed-seed-confetti.jpg?dummy=" + rnum;
+            } else if (source === "indigo") {
+                document.getElementById("left-img").src = "indigo-out_shapes.jpg?dummy=" + rnum;
+                document.getElementById("right-img").src = "indigo_v_pseudo_on_img.jpg?dummy=" + rnum;
             }
+
         }
     </script>
 </head>
 <body style="background-color:black">
     <table style="width: 100%">
         <tr>
-            <td style="width: 50%"><img id="left-img" src="indigo-out_shapes.jpg", style="max-width: 100%"></td>
-            <td style="width: 50%"><img id="right-img" src="indigo_v_pseudo_on_img.jpg", style="max-width: 100%"></td>
+            <td style="width: 50%"><img id="left-img" src="maize-seed-maxseed.jpg", style="max-width: 100%"></td>
+            <td style="width: 50%"><img id="right-img" src="maize-seed-seed-confetti.jpg", style="max-width: 100%"></td>
         </tr>
     </table>
     <div>
-        <input type="button" value="Arabidopsis" onclick="relaod_imgs('arabidopsis')">
-        <input type="button" value="Cassava" onclick="relaod_imgs('cassava')">
-        <input type="button" value="Indigo" onclick="relaod_imgs('indigo')">
-        <input type="button" value="Sorghum" onclick="relaod_imgs('sorghum')">
+        <!--<input type="button" value="Arabidopsis" onclick="relaod_imgs('arabidopsis')">-->
+        <!--<input type="button" value="Cassava" onclick="relaod_imgs('cassava')">-->
+        <!--<input type="button" value="Indigo" onclick="relaod_imgs('indigo')">-->
+        <!-- <input type="button" value="Sorghum" onclick="relaod_imgs('sorghum')">-->
+        <input type="button" value="Maize Seed" onclick="reload_imgs('maize')">
+        <input type="button" value="Quinoa Seed" onclick="reload_imgs('quinoa')">
+
     </div>
 </body>
 </html>
